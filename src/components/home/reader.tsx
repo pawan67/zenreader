@@ -22,7 +22,6 @@ const Reader = () => {
 
   return (
     <div className="mt-6">
-      <ScrollProgress className="bottom-0" />
       <div className="">
         <h1 className="text-2xl font-bold mb-0 flex-1">{title}</h1>
         <div className=" flex items-center gap-2 flex-wrap mt-2">

@@ -7,8 +7,6 @@ Discover a cleaner, calmer way to read your favorite articles.
 
 ---
 
-### ✅ Features Section
-
 **Why ZenRead?**
 
 - 🔸 **Distraction-Free**  

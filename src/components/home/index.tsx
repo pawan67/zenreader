@@ -87,7 +87,6 @@ const Home = () => {
             className="w-full p-2 border h-14 pr-14 rounded-full pl-5"
             required
           />
-          <BorderBeam duration={10} size={100} />
 
           <Button
             className=" cursor-pointer absolute h-10 w-10 right-2 rounded-full top-1/2 -translate-y-1/2 "

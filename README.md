@@ -1,7 +1,7 @@
 # ZenRead
 
 **Read Without Distractions.**  
-Discover a cleaner, calmer way to read your favorite articles.
+Discover a cleaner, calmer way to read your favorite articles. AI Powered
 
 **ZenRead transforms cluttered web pages into beautiful, easy-to-read articles. No ads. No popups. Just pure content.**
 
@@ -19,6 +19,8 @@ Discover a cleaner, calmer way to read your favorite articles.
   Works on blogs, news articles, essays, and more.
 - 🔸 **Dark Mode**  
   Comfortable reading, day or night.
+- 🔸 **AI Summaries**  
+  Powered by Gemini AI to get quick summaries of any article.
 
 ---
 

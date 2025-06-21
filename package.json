@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/react": "^1.2.12",
+    "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^5.1.1",
     "@mozilla/readability": "^0.6.0",
     "@paoramen/cheer-reader": "npm:@jsr/paoramen__cheer-reader@^0.1.2",

@@ -9,6 +9,7 @@ import { AuroraText } from "../magicui/aurora-text";
 import { useFontStore } from "@/store/font";
 import Reader from "./reader";
 import { useHomeStore } from "@/store/home";
+import { BorderBeam } from "../magicui/border-beam";
 
 const Home = () => {
   const urlState = useState("");
@@ -57,21 +58,27 @@ const Home = () => {
 
   return (
     <div className="p-5 max-w-4xl mx-auto">
-      <div className=" mt-20 text-center">
+      <div className=" mt-20 text-center relative">
+        <Icon
+          className=" absolute right-0 -top-10"
+          icon="material-icon-theme:gemini-ai"
+          width="50"
+          height="50"
+        />
         <h1 className=" scroll-m-20 text-center text-5xl md:text-6xl font-extrabold tracking-tight text-balance">
           Read Without Distractions.
         </h1>
 
         <p className=" leading-7 text-muted-foreground [&:not(:first-child)]:mt-3">
-          ZenRead transforms cluttered web pages into beautiful, easy-to-read
-          articles. <br /> No ads. No popups. Just pure content.
+          ZenReader transforms any article into a clean, distraction-free format
+          <br /> Now with AI summaries to save your time.
         </p>
       </div>
       <form
         onSubmit={handleSubmit}
         className=" mt-10 max-w-xl mx-auto flex gap-2"
       >
-        <div className=" relative w-full">
+        <div className=" rounded-full  relative w-full">
           <Input
             type="url"
             placeholder="https://www.example.com/blog"
@@ -80,6 +87,8 @@ const Home = () => {
             className="w-full p-2 border h-14 pr-14 rounded-full pl-5"
             required
           />
+          <BorderBeam duration={10} size={100} />
+
           <Button
             className=" cursor-pointer absolute h-10 w-10 right-2 rounded-full top-1/2 -translate-y-1/2 "
             type="submit"

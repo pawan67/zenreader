@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/shared/header";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import Footer from "@/components/shared/footer";
-
+import { Analytics } from "@vercel/analytics/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -46,6 +46,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable}    font-sans ${geistMono.variable} ${ptSerif.variable} ${inter.variable} ${roboto.variable} antialiased pt-16`}
       >
+        <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

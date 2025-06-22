@@ -6,14 +6,14 @@ export function HomeSectionHeroVideoDialog() {
       <HeroVideoDialog
         className="block dark:hidden "
         animationStyle="from-center"
-        videoSrc="https://www.youtube.com/embed/lXCbp4P7o14?si=_DVIrOpm0pwasYUM"
+        videoSrc="cursorful-video-1750593924119.mp4"
         thumbnailSrc="/screenshot.png"
         thumbnailAlt="Hero Video"
       />
       <HeroVideoDialog
         className="hidden dark:block"
         animationStyle="from-center"
-        videoSrc="https://www.youtube.com/embed/lXCbp4P7o14?si=_DVIrOpm0pwasYUM"
+        videoSrc="cursorful-video-1750593924119.mp4"
         thumbnailSrc="/screenshot.png"
         thumbnailAlt="Hero Video"
       />

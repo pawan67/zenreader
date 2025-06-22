@@ -56,7 +56,7 @@ export async function generateSummary({
     }
 
     // Get the model
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
 
     // Create the prompt
     const formatInstructions = getFormatInstructions(format);

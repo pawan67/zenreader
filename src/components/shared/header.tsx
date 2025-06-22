@@ -46,7 +46,7 @@ const Header = () => {
     >
       <div className="flex items-center justify-between max-w-4xl mx-auto px-5 py-4">
         <div className="flex items-center gap-2">
-          {title && content && (
+          {title && content ? (
             <Button
               variant="outline"
               size="icon"
@@ -59,8 +59,9 @@ const Header = () => {
             >
               <Icon icon="tabler:arrow-left" width="24" height="24" />
             </Button>
+          ) : (
+            <Icon icon="stash:article-alt-duotone" width="32" height="32" />
           )}
-          <Icon icon="stash:article-alt-duotone" width="32" height="32" />{" "}
         </div>
 
         <div>

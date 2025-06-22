@@ -68,15 +68,18 @@
       transform: rotate(-5deg) scale(0.9);
     }
   }
-  --animate-shine: shine var(--duration) infinite linear
-;
+  --animate-shine: shine var(--duration) infinite linear;
   @keyframes shine {
-  0% {
-    background-position: 0% 0%;}
-  50% {
-    background-position: 100% 100%;}
-  to {
-    background-position: 0% 0%;}}
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
   --color-color-5: var(--color-5);
   --color-color-4: var(--color-4);
@@ -84,10 +87,14 @@
   --color-color-2: var(--color-2);
   --color-color-1: var(--color-1);
   @keyframes rainbow {
-  0% {
-    background-position: 0%;}
-  100% {
-    background-position: 200%;}}}
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+}
 
 :root {
   --radius: 0.625rem;
@@ -179,4 +186,78 @@
 
 html {
   scrollbar-gutter: auto;
+}
+
+/* Custom styles for markdown content in summary */
+.summary-markdown {
+  @apply text-base leading-relaxed;
+}
+
+.summary-markdown h1 {
+  @apply text-xl font-bold text-foreground mb-3 mt-4 first:mt-0;
+}
+
+.summary-markdown h2 {
+  @apply text-lg font-semibold text-foreground mb-2 mt-3 first:mt-0;
+}
+
+.summary-markdown h3 {
+  @apply text-base font-medium text-foreground mb-2 mt-2 first:mt-0;
+}
+
+.summary-markdown p {
+  @apply text-base leading-relaxed mb-3 last:mb-0;
+}
+
+.summary-markdown ul {
+  @apply list-disc list-inside space-y-1 mb-3 last:mb-0;
+}
+
+.summary-markdown ol {
+  @apply list-decimal list-inside space-y-1 mb-3 last:mb-0;
+}
+
+.summary-markdown li {
+  @apply text-base leading-relaxed;
+}
+
+.summary-markdown strong {
+  @apply font-semibold text-foreground;
+}
+
+.summary-markdown em {
+  @apply italic text-foreground;
+}
+
+.summary-markdown blockquote {
+  @apply border-l-4 border-primary/30 pl-4 italic text-muted-foreground mb-3 last:mb-0;
+}
+
+.summary-markdown code {
+  @apply bg-muted px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.summary-markdown pre {
+  @apply bg-muted p-3 rounded-lg overflow-x-auto mb-3 last:mb-0;
+}
+
+/* Special styling for different summary formats */
+.summary-bullet-points ul {
+  @apply space-y-2;
+}
+
+.summary-bullet-points li {
+  @apply text-base leading-relaxed;
+}
+
+.summary-section-wise h2 {
+  @apply text-lg font-semibold text-foreground mb-2 mt-4 first:mt-0 border-b border-border pb-1;
+}
+
+.summary-section-wise h3 {
+  @apply text-base font-medium text-foreground mb-2 mt-3;
+}
+
+.summary-headline {
+  @apply text-lg font-semibold text-foreground leading-relaxed;
 }

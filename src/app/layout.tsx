@@ -32,7 +32,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "ZenRead",
+  title: "ZenRead AI",
   description: "Read Without Distractions.",
 };
 

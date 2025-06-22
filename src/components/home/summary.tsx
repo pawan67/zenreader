@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Icon } from "@iconify/react";
-import { generateSummary, SummaryLength } from "@/server-actions/ai-summary";
+import { generateSummary, SummaryFormat } from "@/server-actions/ai-summary";
 import { ShineBorder } from "../magicui/shine-border";
 import { RainbowButton } from "../magicui/rainbow-button";
 import {
@@ -16,6 +16,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useSpeechSynthesis } from "@/hooks/useSpeechSynthesis";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface SummaryProps {
   content: string;
@@ -26,7 +28,8 @@ export default function Summary({ content, title }: SummaryProps) {
   const [summary, setSummary] = useState<string>("");
   const [wordCount, setWordCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [selectedLength, setSelectedLength] = useState<SummaryLength>("medium");
+  const [selectedFormat, setSelectedFormat] =
+    useState<SummaryFormat>("paragraph");
   const [error, setError] = useState<string>("");
 
   // Speech synthesis hook
@@ -49,15 +52,15 @@ export default function Summary({ content, title }: SummaryProps) {
     },
   });
 
-  const handleGenerateSummary = async (length: SummaryLength) => {
+  const handleGenerateSummary = async (format: SummaryFormat) => {
     setLoading(true);
     setError("");
-    setSelectedLength(length);
+    setSelectedFormat(format);
 
     try {
       const result = await generateSummary({
         content,
-        length,
+        format,
         title,
       });
 
@@ -86,47 +89,60 @@ export default function Summary({ content, title }: SummaryProps) {
     setSpeechRate(newRate);
   };
 
-  const lengthOptions: {
-    value: SummaryLength;
+  const formatOptions: {
+    value: SummaryFormat;
     label: string;
     description: string;
+    icon: string;
   }[] = [
     {
-      value: "short",
-      label: "Short",
-      description: "50 words or less",
+      value: "paragraph",
+      label: "Paragraph",
+      description: "Flowing paragraph format",
+      icon: "tabler:file-text",
     },
     {
-      value: "medium",
-      label: "Medium",
-      description: "100 words or less",
+      value: "bullet-points",
+      label: "Bullet Points",
+      description: "Key points in list format",
+      icon: "tabler:list",
     },
     {
-      value: "long",
-      label: "Long",
-      description: "150 words or less",
+      value: "headline",
+      label: "Headline",
+      description: "Single impactful sentence",
+      icon: "tabler:heading",
+    },
+    {
+      value: "section-wise",
+      label: "Section-wise",
+      description: "Breakdown by sections",
+      icon: "tabler:layout-grid",
     },
   ];
 
   return (
     <Card className="w-full relative">
-      <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+      <ShineBorder borderWidth={2}  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
 
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Icon icon="mingcute:ai-fill" width="24" height="24" /> Summarize with
           AI
         </CardTitle>
-        <div className="flex flex-wrap  mt-3 gap-2">
-          {lengthOptions.map((option) => (
+
+        {/* Format Selection */}
+        <div className="flex flex-wrap gap-2">
+          {formatOptions.map((option) => (
             <Button
               key={option.value}
-              variant={selectedLength === option.value ? "default" : "outline"}
+              variant={selectedFormat === option.value ? "default" : "outline"}
               onClick={() => handleGenerateSummary(option.value)}
               disabled={loading}
               className="text-xs rounded-full"
               size="sm"
             >
+              <Icon icon={option.icon} className="h-3 w-3 mr-1" />
               {option.label}
               <Badge
                 variant="secondary"
@@ -142,7 +158,7 @@ export default function Summary({ content, title }: SummaryProps) {
         {loading && (
           <div className="flex items-center gap-2 text-muted-foreground">
             <Icon icon="tabler:loader-2" className="h-4 w-4 animate-spin" />
-            Generating summary...
+            Generating {selectedFormat} summary...
           </div>
         )}
 
@@ -156,12 +172,16 @@ export default function Summary({ content, title }: SummaryProps) {
         {summary && !loading && (
           <div className="space-y-4">
             <div className="flex items-center justify-between text-sm text-muted-foreground">
-              <span>Summary ({selectedLength})</span>
+              <span>Summary ({selectedFormat})</span>
               <Badge variant="outline">{wordCount} words</Badge>
             </div>
 
             <div className="prose prose-sm dark:prose-invert max-w-none">
-              <p className=" text-base leading-relaxed">{summary}</p>
+              <div className={`summary-markdown summary-${selectedFormat}`}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {summary}
+                </ReactMarkdown>
+              </div>
             </div>
 
             {/* Voice Controls */}
@@ -310,7 +330,7 @@ export default function Summary({ content, title }: SummaryProps) {
               height="16"
             />
             <p className="text-sm">
-              Click a length option above to generate an AI summary
+              Select a format above to generate an AI summary
             </p>
           </div>
         )}

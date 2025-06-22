@@ -6,7 +6,6 @@ import { ScrollProgress } from "../magicui/scroll-progress";
 import { Badge } from "../ui/badge";
 import { useState } from "react";
 import Summary from "./summary";
-import { BorderBeam } from "../magicui/border-beam";
 
 const Reader = () => {
   const {
@@ -55,6 +54,12 @@ const Reader = () => {
               {timeToRead} min read
             </Badge>
           )}
+          {words && (
+            <Badge variant="secondary">
+              <Icon icon="material-symbols:match-word" width="16" height="16" />{" "}
+              {words} words
+            </Badge>
+          )}
         </div>
         {publishedTime && (
           <p className="text-sm mt-2 text-muted-foreground">
@@ -71,8 +76,6 @@ const Reader = () => {
           className="w-full justify-between rounded-xl h-14 relative"
           size="lg"
         >
-          <BorderBeam duration={10} />
-
           <span className="flex items-center gap-2">
             <Icon icon="material-icon-theme:gemini-ai" width="16" height="16" />{" "}
             <span className="flex items-center gap-2">

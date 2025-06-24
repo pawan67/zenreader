@@ -12,6 +12,7 @@ const FontSizeChanger = () => {
       <Button
         variant="outline"
         size="icon"
+        className="rounded-full"
         onClick={() => setFontSize(fontSize - 1)}
         disabled={fontSize <= 12}
         aria-label="Decrease font size"
@@ -22,6 +23,7 @@ const FontSizeChanger = () => {
       <Button
         variant="outline"
         size="icon"
+        className="rounded-full"
         onClick={() => setFontSize(fontSize + 1)}
         disabled={fontSize >= 32}
         aria-label="Increase font size"

@@ -184,7 +184,9 @@
   }
 }
 
-html {
+html > body[data-scroll-locked] {
+  overflow: visible !important;
+  margin-right: 0 !important;
   scrollbar-gutter: auto;
 }
 
@@ -260,4 +262,12 @@ html {
 
 .summary-headline {
   @apply text-lg font-semibold text-foreground leading-relaxed;
+}
+
+img {
+  @apply rounded-lg mx-auto;
+}
+
+figcaption {
+  @apply text-center text-sm text-muted-foreground;
 }

@@ -123,16 +123,18 @@ export default function Summary({ content, title }: SummaryProps) {
 
   return (
     <Card className="w-full relative">
-      <ShineBorder borderWidth={2}  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+      <ShineBorder
+        borderWidth={2}
+        shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+      />
 
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Icon icon="mingcute:ai-fill" width="24" height="24" /> Summarize with
-          AI
+          <Icon icon="ix:ai" width="24" height="24" /> Summarize with AI
         </CardTitle>
 
         {/* Format Selection */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex mt-3 flex-wrap gap-2">
           {formatOptions.map((option) => (
             <Button
               key={option.value}
@@ -144,10 +146,7 @@ export default function Summary({ content, title }: SummaryProps) {
             >
               <Icon icon={option.icon} className="h-3 w-3 mr-1" />
               {option.label}
-              <Badge
-                variant="secondary"
-                className="ml-1 hidden md:block text-xs"
-              >
+              <Badge variant="secondary" className="ml-1 hidden   text-xs">
                 {option.description}
               </Badge>
             </Button>

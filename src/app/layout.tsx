@@ -44,19 +44,21 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body
-        className={`${geistSans.variable}    font-sans ${geistMono.variable} ${ptSerif.variable} ${inter.variable} ${roboto.variable} antialiased pt-16`}
+        className={`${geistSans.variable}    font-sans ${geistMono.variable} ${ptSerif.variable} ${inter.variable} ${roboto.variable} antialiased `}
       >
+        <div className={` pt-16`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </div>
         <Analytics />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
       </body>
     </html>
   );
